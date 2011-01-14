@@ -1,0 +1,55 @@
+= Google Analytics Cookie Parser
+
+Simple ruby library for parsing the __umtz and __umta cookies which Google Analytics uses to track referrers and visitors.
+
+You may wish to use this library to integrate data from Google Analytics into your internal CRM or sales tracking application.
+
+== Usage
+
+Create an instance, or use the convenience method GaCookieParser.parse, providing a hash with keys :umtz and/or :umtz as argument.
+
+	utmz = cookies["__utmz"] # in a rails controller context
+	utma = cookies["__utma"]
+	
+	@data = GaCookieParser::GaCookieParser.new(:utmz => utmz, :utma => utma)
+
+Then, @data provides #utmz_hash and #utma_hash methods which return hashes as follows:
+
+	# @data.utmz_hash
+	# note that not all of these will be present, and some are mutually exclusive
+	{
+		:domain_hash => '12979384',
+		:timestamp   => '1294887021',	# unix timestamp
+		:session_counter => '1',
+		:campaign_number => '1',
+		:utmcsr => 'google', 			# source
+		:utmccn => '(organic)',			# campaign name
+		:utmcmd => 'organic',			# medium
+		:utmctr => 'search term',		# term(s)
+		:utmcct => '/ref.php,			# content (referring page in case of referrals)
+		:utmgclid => 'CI7wh8C6tKYCFU2DpAod7z97IQ'	# gclid, linking referral back to adwords
+	}
+
+	# @data.utma_hash
+	{
+		:domain_hash => '12979384',
+		:visitor_id =>  '1392679796',		# a random number
+		:initial_visit_at =>  '1289844797',	# unix timestanmp
+		:previous_visit_at => '1294798990',	# unix timestanmp
+		:current_visit_at => '1294866800',	# unix timestanmp
+		:session_counter => '1' 
+	}
+
+== Notes
+
+Documentation on these cookies is somewhat sparse. Here are the main resources used in putting this library together:
+
+* {Google documentation}[http://code.google.com/apis/analytics/docs/concepts/gaConceptsCookies.html] on the Google Analytics cookies
+* {Integrating Google Analytics With a CRM}[http://cutroni.com/blog/2007/10/29/integrating-google-analytics-with-a-crm/] blog post by Justin Cutroni
+* {UPDATED: Integrating Google Analytics with a CRM}[http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/] blog post by Justin Cutroni
+* {GA Basics: The Structure of Cookie Values}[http://blog.vkistudios.com/index.cfm/2010/8/31/GA-Basics-The-Structure-of-Cookie-Values] blog post by VKI Studios
+* {Python Google Analytics Cookie Parser}[https://github.com/RyOnLife/Python-Google-Analytics-Cookie-Parser] (from which I borrowed some variable names)
+
+== Copyright
+
+Copyright (c) 2011 Simon Robson. See LICENSE for details.
