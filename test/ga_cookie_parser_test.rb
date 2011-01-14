@@ -82,6 +82,25 @@ class GaCookieParserTest < Test::Unit::TestCase
     end
   end
   
+  context "parsing an adwords-linked cookie" do
+    setup do
+      @search = GaCookieParser.new(:utmz => "57979384.1294829655.1.1.utmgclid=CL_EqKvAtKYCFU80pAodyGj_IA|utmccn=(not set)|utmcmd=(not set)|utmctr=lolcats")
+      @content_network = GaCookieParser.new(:utmz => "23979724.1294828059.1.1.utmgclid=CI7wh8C6tKYCFU2DpAod7z97IQ|utmccn=(not set)|utmcmd=(not set)")
+    end
+      
+    should "record the gclid" do
+      assert_equal "CL_EqKvAtKYCFU80pAodyGj_IA", @search.utmz_hash[:utmgclid]
+      assert_equal "CI7wh8C6tKYCFU2DpAod7z97IQ", @content_network.utmz_hash[:utmgclid]
+    end
+    
+    should "set the utmcsr to 'google adwords'" do
+      assert_equal "google adwords", @search.utmz_hash[:utmcsr]
+      assert_equal "google adwords", @content_network.utmz_hash[:utmcsr]
+    end
+
+
+  end
+  
   context "parsing a bad cookie" do
     setup do
       @result = GaCookieParser.new(:utmz => "123XXX", :utma => "\"jk.,./l;o.mnhhlk")
@@ -90,7 +109,6 @@ class GaCookieParserTest < Test::Unit::TestCase
     should "not throw an error" do
       assert @result
     end
-
   end
   
   

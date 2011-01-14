@@ -31,6 +31,9 @@ module GaCookieParser
          k, v = pair.split("=")
          h[k.to_sym] = v if k && v
        end
+       
+       h[:utmcsr] = 'google adwords' if h[:utmgclid]
+       
     end
     
     def parse_utma
