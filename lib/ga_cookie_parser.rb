@@ -1,5 +1,10 @@
 module GaCookieParser
   
+  def self.parse(*args)
+    GaCookieParser.new(*args)
+  end
+  
+  
   class GaCookieParser
     
     attr_reader :utmz, :utma, :utmz_hash, :utma_hash

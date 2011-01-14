@@ -103,6 +103,19 @@ class GaCookieParserTest < Test::Unit::TestCase
 
   end
   
+  context "calling the parse method on the module" do
+    setup do
+      @result = ::GaCookieParser.parse(:utmz => @utmz, :utma => @utma)
+    end
+    
+    should "return a GaCookieParser instance correctly initialized" do
+      assert @result.is_a?(::GaCookieParser::GaCookieParser)
+      assert_not_nil @result.utmz_hash
+      assert_not_nil @result.utma_hash
+    end
+    
+  end
+  
   context "parsing a bad cookie" do
     setup do
       @result = GaCookieParser.new(:utmz => "123XXX", :utma => "\"jk.,./l;o.mnhhlk")
