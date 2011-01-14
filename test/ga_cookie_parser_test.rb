@@ -82,5 +82,16 @@ class GaCookieParserTest < Test::Unit::TestCase
     end
   end
   
+  context "parsing a bad cookie" do
+    setup do
+      @result = GaCookieParser.new(:utmz => "123XXX", :utma => "\"jk.,./l;o.mnhhlk")
+    end
+      
+    should "not throw an error" do
+      assert @result
+    end
+
+  end
+  
   
 end
