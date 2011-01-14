@@ -93,9 +93,11 @@ class GaCookieParserTest < Test::Unit::TestCase
       assert_equal "CI7wh8C6tKYCFU2DpAod7z97IQ", @content_network.utmz_hash[:utmgclid]
     end
     
-    should "set the utmcsr to 'google adwords'" do
-      assert_equal "google adwords", @search.utmz_hash[:utmcsr]
-      assert_equal "google adwords", @content_network.utmz_hash[:utmcsr]
+    should "set the utmcsr to 'google' and utmcmd to 'cpc'" do
+      assert_equal "google", @search.utmz_hash[:utmcsr]
+      assert_equal "cpc", @search.utmz_hash[:utmcmd]
+      assert_equal "google", @content_network.utmz_hash[:utmcsr]
+      assert_equal "cpc", @content_network.utmz_hash[:utmcmd]
     end
 
 
