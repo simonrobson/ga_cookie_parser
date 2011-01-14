@@ -1,0 +1,3 @@
+module GaCookieParser
+  # Your code goes here...
+end
