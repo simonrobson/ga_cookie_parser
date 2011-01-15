@@ -34,9 +34,9 @@ Then, @data provides #utmz_hash and #utma_hash methods which return hashes as fo
 	{
 		:domain_hash => '12979384',
 		:visitor_id =>  '1392679796',		# a random number
-		:initial_visit_at =>  '1289844797',	# unix timestanmp
-		:previous_visit_at => '1294798990',	# unix timestanmp
-		:current_visit_at => '1294866800',	# unix timestanmp
+		:initial_visit_at =>  '1289844797',	# unix timestamp
+		:previous_visit_at => '1294798990',	# unix timestamp
+		:current_visit_at => '1294866800',	# unix timestamp
 		:session_counter => '1' 
 	}
 
