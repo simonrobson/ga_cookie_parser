@@ -4,6 +4,12 @@ Simple ruby library for parsing the __umtz and __umta cookies which Google Analy
 
 You may wish to use this library to integrate data from Google Analytics into your internal CRM or sales tracking application.
 
+== Installation
+
+The library is available as a gem.
+
+	gem install ga_cookie_parser
+
 == Usage
 
 Create an instance, or use the convenience method GaCookieParser.parse, providing a hash with keys :umtz and/or :umtz as argument.
