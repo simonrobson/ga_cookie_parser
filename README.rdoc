@@ -8,43 +8,42 @@ You may wish to use this library to integrate data from Google Analytics into yo
 
 The library is available as a gem.
 
-	gem install ga_cookie_parser
+    gem install ga_cookie_parser
 
 == Usage
 
 Create an instance, or use the convenience method GaCookieParser.parse, providing a hash with keys :umtz and/or :umtz as argument.
 
-	utmz = cookies["__utmz"] # in a rails controller context
-	utma = cookies["__utma"]
-	
-	@data = GaCookieParser::GaCookieParser.new(:utmz => utmz, :utma => utma)
+    utmz = cookies["__utmz"] # in a rails controller context
+    utma = cookies["__utma"]
+    @data = GaCookieParser::GaCookieParser.new(:utmz => utmz, :utma => utma)
 
 Then, @data provides #utmz_hash and #utma_hash methods which return hashes as follows:
 
-	# @data.utmz_hash
-	# note that not all of these will be present, and some are mutually exclusive
-	{
-		:domain_hash => '12979384',
-		:timestamp   => '1294887021',	# unix timestamp
-		:session_counter => '1',
-		:campaign_number => '1',
-		:utmcsr => 'google', 			# source
-		:utmccn => '(organic)',			# campaign name
-		:utmcmd => 'organic',			# medium
-		:utmctr => 'search term',		# term(s)
-		:utmcct => '/ref.php,			# content (referring page in case of referrals)
-		:utmgclid => 'CI7wh8C6tKYCFU2DpAod7z97IQ'	# gclid, linking referral back to adwords
-	}
-
-	# @data.utma_hash
-	{
-		:domain_hash => '12979384',
-		:visitor_id =>  '1392679796',		# a random number
-		:initial_visit_at =>  '1289844797',	# unix timestamp
-		:previous_visit_at => '1294798990',	# unix timestamp
-		:current_visit_at => '1294866800',	# unix timestamp
-		:session_counter => '1' 
-	}
+    # @data.utmz_hash
+    # note that not all of these will be present, and some are mutually exclusive
+    {
+      :domain_hash => '12979384',
+      :timestamp   => '1294887021',  # unix timestamp
+      :session_counter => '1',
+      :campaign_number => '1',
+      :utmcsr => 'google',       # source
+      :utmccn => '(organic)',      # campaign name
+      :utmcmd => 'organic',      # medium
+      :utmctr => 'search term',    # term(s)
+      :utmcct => '/ref.php,      # content (referring page in case of referrals)
+      :utmgclid => 'CI7wh8C6tKYCFU2DpAod7z97IQ'  # gclid, linking referral back to adwords
+    }
+  
+    # @data.utma_hash
+    {
+      :domain_hash => '12979384',
+      :visitor_id =>  '1392679796',    # a random number
+      :initial_visit_at =>  '1289844797',  # unix timestamp
+      :previous_visit_at => '1294798990',  # unix timestamp
+      :current_visit_at => '1294866800',  # unix timestamp
+      :session_counter => '1' 
+    }
 
 == Notes
 
