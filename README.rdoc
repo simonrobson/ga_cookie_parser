@@ -1,6 +1,6 @@
 = Google Analytics Cookie Parser
 
-Simple ruby library for parsing the __umtz and __umta cookies which Google Analytics uses to track referrers and visitors.
+Simple ruby library for parsing the __umtz, __umtb and __umta cookies which Google Analytics uses to track referrers and visitors.
 
 You may wish to use this library to integrate data from Google Analytics into your internal CRM or sales tracking application.
 
@@ -15,10 +15,11 @@ The library is available as a gem.
 Create an instance, or use the convenience method GaCookieParser.parse, providing a hash with keys :umtz and/or :umtz as argument.
 
     utmz = cookies["__utmz"] # in a rails controller context
+		utmb = cookies["__utmb"]
     utma = cookies["__utma"]
-    @data = GaCookieParser::GaCookieParser.new(:utmz => utmz, :utma => utma)
+    @data = GaCookieParser::GaCookieParser.new(:utmz => utmz, :utmb => utmb, :utma => utma)
 
-Then, @data provides #utmz_hash and #utma_hash methods which return hashes as follows:
+Then, @data provides #utmz_hash, #utmb_hash and #utma_hash methods which return hashes as follows:
 
     # @data.utmz_hash
     # note that not all of these will be present, and some are mutually exclusive
