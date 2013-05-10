@@ -7,10 +7,11 @@ module GaCookieParser
   
   class GaCookieParser
     
-    attr_reader :utmz, :utma, :utmz_hash, :utma_hash
+    attr_reader :utmz, :utmb, :utma, :utmz_hash, :utmb_hash, :utma_hash
     
     def initialize(cookies = {})
       @utmz = cookies[:utmz]
+      @utmb = cookies[:utmb]
       @utma = cookies[:utma]
       parse_cookies
     end
@@ -19,12 +20,17 @@ module GaCookieParser
       !(@utmz.nil? || @utmz.empty?)
     end
     
+    def utmb?
+      !(@utmb.nil? || @utmb.empty?)
+    end
+    
     def utma?
       !(@utma.nil? || @utma.empty?)
     end
     
     def parse_cookies
       parse_utmz
+      parse_utmb
       parse_utma
     end
     
@@ -43,6 +49,12 @@ module GaCookieParser
          h[:utmcmd] = 'cpc'
        end
        
+    end
+    
+    def parse_utmb
+      return if (@utmb.nil? || @utmb.empty?)
+      @utmb_hash = h = {}
+      h[:domain_hash], h[:pageview], h[:outbound_click], h[:timestamp] = @utmb.split(".")
     end
     
     def parse_utma
