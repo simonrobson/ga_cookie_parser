@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["shrobson@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Google Analytics Cookie Parsing Gem}
-  s.description = %q{Gem to parse the utmz and utma tracking coockies used by Google Analytics.}
+  s.description = %q{Gem to parse the utmz, utmb and utma tracking coockies used by Google Analytics.}
 
   s.rubyforge_project = "ga_cookie_parser"
   
