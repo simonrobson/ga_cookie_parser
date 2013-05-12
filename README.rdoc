@@ -15,7 +15,7 @@ The library is available as a gem.
 Create an instance, or use the convenience method GaCookieParser.parse, providing a hash with keys :umtz and/or :umtz as argument.
 
     utmz = cookies["__utmz"] # in a rails controller context
-		utmb = cookies["__utmb"]
+    utmb = cookies["__utmb"]
     utma = cookies["__utma"]
     @data = GaCookieParser::GaCookieParser.new(:utmz => utmz, :utmb => utmb, :utma => utma)
 
@@ -61,7 +61,8 @@ Documentation on these cookies is somewhat sparse. Here are the main resources u
 
 Was harder to find documentation on this (thanks to dominikform for the PR). The final link above contains the following details, copied here in case they disappear:
 
-  The content of the cookie include domain hash, pageview, number of outbound link click counting down from 10, and current time stamp
+  The content of the cookie include domain hash, pageview, number of outbound link click
+  counting down from 10, and current time stamp
 
 == Copyright
 
