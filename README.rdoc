@@ -55,6 +55,13 @@ Documentation on these cookies is somewhat sparse. Here are the main resources u
 * {UPDATED: Integrating Google Analytics with a CRM}[http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/] blog post by Justin Cutroni
 * {GA Basics: The Structure of Cookie Values}[http://blog.vkistudios.com/index.cfm/2010/8/31/GA-Basics-The-Structure-of-Cookie-Values] blog post by VKI Studios
 * {Python Google Analytics Cookie Parser}[https://github.com/RyOnLife/Python-Google-Analytics-Cookie-Parser] (from which I borrowed some variable names)
+* {Google Analytics Cookies (utma, utmb, utmz)}[http://www.webtrafficexchange.com/google-analytics-cookies-utma-utmb-utmz] (includes utmb structure)
+
+=== UTMB
+
+Was harder to find documentation on this (thanks to dominikform for the PR). The final link above contains the following details, copied here in case they disappear:
+
+> The content of the cookie include domain hash, pageview, number of outbound link click counting down from 10, and current time stamp
 
 == Copyright
 
