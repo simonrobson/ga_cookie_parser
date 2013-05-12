@@ -45,6 +45,14 @@ Then, @data provides #utmz_hash, #utmb_hash and #utma_hash methods which return 
       :current_visit_at => '1294866800',  # unix timestamp
       :session_counter => '1' 
     }
+    
+    # @data.utmb_hash
+    {
+      :domain_hash => '12979384',
+      :pageview =>  '3',    # pageview count in this 30 min session
+      :outbound_click =>  '10',  # number of outbound links clicked counting down from 10
+      :timestamp => '1294866800'  # current timestamp
+    }
 
 == Notes
 
