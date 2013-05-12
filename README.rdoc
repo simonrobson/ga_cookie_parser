@@ -61,7 +61,7 @@ Documentation on these cookies is somewhat sparse. Here are the main resources u
 
 Was harder to find documentation on this (thanks to dominikform for the PR). The final link above contains the following details, copied here in case they disappear:
 
-> The content of the cookie include domain hash, pageview, number of outbound link click counting down from 10, and current time stamp
+  The content of the cookie include domain hash, pageview, number of outbound link click counting down from 10, and current time stamp
 
 == Copyright
 
