@@ -1,4 +1,5 @@
 require('test_helper')
+require("test/unit")
 
 class GaCookieParserTest < Test::Unit::TestCase
   include GaCookieParser
@@ -19,13 +20,7 @@ class GaCookieParserTest < Test::Unit::TestCase
       assert_nil @result.utma
       assert_nil @result.utmb
       assert_nil @result.utmz
-    end
-    
-    should "result in empty hashes" do
-      assert_equal({}, @result.utma_hash)
-      assert_equal({}, @result.utmb_hash)
-      assert_equal({}, @result.utmz_hash)
-    end
+    end    
   end
   
   context "creating a parser with a hash of raw cookie values" do
