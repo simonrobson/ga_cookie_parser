@@ -6,7 +6,8 @@ module GaCookieParser
   
   
   class GaCookieParser
-    
+    UTMZ_KEY_WHITE_LIST = %w(utmcsr utmccn utmcmd utmctr utmcct utmgclid)
+      
     attr_reader :utmz, :utmb, :utma, :utmz_hash, :utmb_hash, :utma_hash
     
     def initialize(cookies = {})
@@ -41,7 +42,7 @@ module GaCookieParser
        
        kv_pairs && kv_pairs.split("|").each do |pair|
          k, v = pair.split("=")
-         h[k.to_sym] = v if k && v
+         h[k.to_sym] = v if k && v && UTMZ_KEY_WHITE_LIST.include?(k)
        end
        
        if h[:utmgclid]
@@ -61,8 +62,7 @@ module GaCookieParser
       return if (@utma.nil? || @utma.empty?)
       @utma_hash = h = {}
       h[:domain_hash], h[:visitor_id], h[:initial_visit_at], h[:previous_visit_at], h[:current_visit_at], h[:session_counter] = @utma.split(".")
-    end
-    
+    end    
   end
   
   
