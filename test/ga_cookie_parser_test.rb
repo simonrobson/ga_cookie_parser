@@ -20,6 +20,12 @@ class GaCookieParserTest < Test::Unit::TestCase
       assert_nil @result.utmb
       assert_nil @result.utmz
     end
+    
+    should "result in empty hashes" do
+      assert_equal({}, @result.utma_hash)
+      assert_equal({}, @result.utmb_hash)
+      assert_equal({}, @result.utmz_hash)
+    end
   end
   
   context "creating a parser with a hash of raw cookie values" do
@@ -147,5 +153,13 @@ class GaCookieParserTest < Test::Unit::TestCase
     end
   end
   
-  
+  context "parsing an invalid utmz key" do
+    setup do
+      @result = GaCookieParser.new(:utmz => "23979724.1294828059.1.1.utmgclid=CI7wh8C6tKYCFU2DpAod7z97IQ|utmccn=(not set)|utmcmd=(not set)|utcmalicious=test")
+    end
+      
+    should "not return invalid key" do
+      assert_nil @result.utmz_hash[:utcmalicious]
+    end    
+  end
 end
